@@ -12,16 +12,9 @@
       <p>{{ filename }}</p>
       <br>
       <div class="button">
-        <div class="create">
-          <button @click="create" type="submit">Create</button>
-          <div id="result" v-if="isSuccess">OK</div>
-          <div id="error" v-if="isError">Error</div>
-        </div>
-        <div class="update">
-          <button @click="update" type="submit">Update</button>
-          <div id="result" v-if="isSuccess">OK</div>
-          <div id="error" v-if="isError">Error</div>
-        </div>
+        <button @click="update" type="submit">Update</button>
+        <div class="success" v-if="isSuccess">Success!</div>
+        <div class="error" v-if="isError">Failed</div>
       </div>
     </section>
   </article>
@@ -69,29 +62,7 @@ export default {
       this.$data.uploadFile = files[0]
       this.$data.filename = files[0].name
     },
-    create: function () {
-      this.$data.isSubmitted = true
-      let formData = new FormData()
-      formData.append('ansFP', this.$data.uploadFile)
-      formData.append('ChallengeID', this.$data.id)
-      setTimeout(() => {
-        HTTP.post('answer', formData,
-          {
-            headers: {
-              'content-type': 'multipart/form-data',
-              'Authorization': localStorage.getItem('token')
-            }
-          })
-          .then(response => {
-            this.isSuccess = true
-            this.isError = false
-          })
-          .catch(e => {
-            this.$data.isError = true
-            this.isSuccess = false
-          })
-      }, 3000)
-    },
+
     update: function () {
       this.$data.isSubmitted = true
       let formData = new FormData()
@@ -113,7 +84,7 @@ export default {
             this.$data.isError = true
             this.isSuccess = false
           })
-      }, 3000)
+      }, 1000)
     }
 
   }
@@ -231,16 +202,13 @@ button:active {
     height: 5em;
   }
 }
-#result {
-  font-size: 36px;
+.success {
+  margin: 2vh auto 2vh auto;
+  font-size: 24px;
 }
-.button {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.error {
+  margin: 2vh auto 2vh auto;
+  font-size: 24px;
+  color: #ff5d86;
 }
 </style>
