@@ -235,12 +235,15 @@ button:active {
   color: #ff5d86;
 }
 .signout {
-  margin: 15vh auto 10vh auto;
-  font-size: 67px;
+  margin: 10vh auto 10vh auto;
+  font-size: 40px;
   padding: 0.3em 1em 0.3em 1em;
   background: #FFF;
   border: 3px solid #6699cc;
   border-radius: 5px;
+}
+.signout:hover {
+  background: #fcfcfc;
   cursor: pointer;
 }
 </style>
