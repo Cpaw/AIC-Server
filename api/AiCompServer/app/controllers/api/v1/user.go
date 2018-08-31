@@ -146,7 +146,7 @@ func (c ApiUser) Update(id int) revel.Result {
 			return c.HandleBadRequestError(err.Error())
 		}
 		salt := revel.Config.StringDefault("password.salt", "yatuhashi")
-		converted, _ := scrypt.Key([]byte(userNew.Password), salt, 16384, 8, 1, 32)
+		converted, _ := scrypt.Key([]byte(userNew.Password), []byte(salt), 16384, 8, 1, 32)
 		userNew.Password = hex.EncodeToString(converted[:])
 	}
 	if err := CheckRole(c.ApiV1Controller, []string{"admin"}); err != nil {
