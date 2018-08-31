@@ -139,12 +139,16 @@ func (c ApiUser) Update(id int) revel.Result {
 	if err := c.BindParams(userNew); err != nil {
 		return c.HandleBadRequestError(err.Error())
 	}
-	if err := validator.Validate(userNew); err != nil {
-		return c.HandleBadRequestError(err.Error())
+	if "" == userNew.Password {
+		userNew.Password = userOld.Password
+	} else {
+		if err := validator.Validate(userNew); err != nil {
+			return c.HandleBadRequestError(err.Error())
+		}
+		salt := revel.Config.StringDefault("password.salt", "yatuhashi")
+		converted, _ := scrypt.Key([]byte(userNew.Password), salt, 16384, 8, 1, 32)
+		userNew.Password = hex.EncodeToString(converted[:])
 	}
-	salt := []byte("yatuhashi")
-	converted, _ := scrypt.Key([]byte(userNew.Password), salt, 16384, 8, 1, 32)
-	userNew.Password = hex.EncodeToString(converted[:])
 	if err := CheckRole(c.ApiV1Controller, []string{"admin"}); err != nil {
 		userNew.Role = userOld.Role
 	}
