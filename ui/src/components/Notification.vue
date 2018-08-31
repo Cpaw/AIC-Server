@@ -2,9 +2,9 @@
   <article>
     <section>
       <ol v-for="notification in notifications" :key="notification.id">
-        <li class="title">{{notification.title}}</li>
-        <li class="text">{{notification.notification}}</li>
-        <li class="date">{{notification.updated_at}}</li>
+        <li class="title">{{ notification.title }}</li>
+        <li class="text">{{ notification.notification }}</li>
+        <li class="date">{{ notification.updated_at }}</li>
       </ol>
     </section>
   </article>
@@ -15,10 +15,6 @@ export default {
   data () {
     return {
       notifications: {
-        id: 0,
-        title: '',
-        notification: '',
-        updated_at: ''
       }
     }
   },
