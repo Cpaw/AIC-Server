@@ -32,8 +32,8 @@
           <button type="submit">Submit</button>
         </div>
       </form>
+      <div class="success" v-if="isSuccess">Success!</div>
       <div class="error" v-if="isError">Invalid data</div>
-      <div class="isSuccess" v-if="isSuccess">Invalid data</div>
     </section>
   </article>
 </template>
@@ -93,6 +93,9 @@ export default {
         .then(response => {
           this.$data.isSuccess = true
           this.$data.isError = false
+          setTimeout(() => {
+            this.$data.isSuccess = false
+          }, 3000)
         })
         .catch(e => {
           this.$data.isSuccess = false
@@ -142,5 +145,14 @@ input, textarea {
 }
 .label {
   font-size: 24px;
+}
+.success {
+  margin: 2vh auto 2vh auto;
+  font-size: 24px;
+}
+.error {
+  margin: 2vh auto 2vh auto;
+  font-size: 24px;
+  color: #ff5d86;
 }
 </style>
