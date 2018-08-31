@@ -31,7 +31,8 @@
           <button type="submit">Submit</button>
         </div>
       </form>
-      <div class="error" v-if="addChallengeError">Invalid data</div>
+      <div class="success" v-if="isSuccess">Success!</div>
+      <div class="error" v-if="isFailed">Failed</div>
     </section>
   </article>
 </template>
@@ -47,7 +48,8 @@ export default {
         QuestionText: '',
         Weight: 0
       },
-      addChallengeError: false,
+      isSuccess: false,
+      isFailed: false,
       isAdmin: false
     }
   },
@@ -78,9 +80,11 @@ export default {
           withCredentials: true
         })
         .then(response => {
+          this.$data.isFailed = false
+          this.$data.isSuccess = true
         })
         .catch(e => {
-          this.$data.addChallengeError = true
+          this.$data.isFailed = true
         })
     }
   }
@@ -130,9 +134,10 @@ button {
   text-decoration: none;
   color: #fff;
   background: #6699cc;
-  border: solid 2px #6699cc;
+  border: solid 2px #5386b9;
   font-size: 20px;
   font-family: "a-otf-ud-shin-maru-go-pr6n";
+  font-weight: 700;
   width: 10vw;
 }
 button:hover {
@@ -154,6 +159,11 @@ button:active {
 }
 .label {
   text-align: center;
+}
+.success {
+  margin: 2vh auto 2vh auto;
+  font-size: 24px;
+  color: #000;
 }
 .error {
   margin: 2vh auto 2vh auto;
