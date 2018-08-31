@@ -77,17 +77,17 @@ export default {
           },
           withCredentials: true
         })
-      .then(response => {
-        this.$data.isSuccess = true
-        this.$data.isError = false
-        setTimeout(() => {
+        .then(response => {
+          this.$data.isSuccess = true
+          this.$data.isError = false
+          setTimeout(() => {
+            this.$data.isSuccess = false
+          }, 3000)
+        })
+        .catch(e => {
           this.$data.isSuccess = false
-        }, 3000)
-      })
-      .catch(e => {
-        this.$data.isSuccess = false
-        this.$data.isError = true
-      })
+          this.$data.isError = true
+        })
     }
   }
 }
