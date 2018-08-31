@@ -109,7 +109,10 @@ export default {
           this.$router.push('/challenges')
         })
         .catch(e => {
-          localStorage.setItem('token', '')
+          HTTP.get('signin')
+            .then(response => {
+              localStorage.setItem('token', response.headers.authorization)
+            })
           this.$data.SignInError = true
         })
     },
