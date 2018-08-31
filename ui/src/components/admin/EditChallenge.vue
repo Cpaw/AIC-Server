@@ -117,16 +117,19 @@ button {
   position: relative;
   padding: 0.25em 0.5em;
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
   background: #6699cc;
-  border: solid 2px #6699cc;
+  border: solid 2px #5386b9;
   font-size: 20px;
   font-family: "a-otf-ud-shin-maru-go-pr6n";
+  font-weight: 700;
   width: 10vw;
 }
 button:hover {
   cursor: pointer;
   background: #76a9dc;
+  transform: scale(1.01, 1.01);
+
 }
 button:active {
   background: #4679ac;
