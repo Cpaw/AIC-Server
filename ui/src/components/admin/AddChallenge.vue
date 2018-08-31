@@ -163,7 +163,6 @@ button:active {
 .success {
   margin: 2vh auto 2vh auto;
   font-size: 24px;
-  color: #000;
 }
 .error {
   margin: 2vh auto 2vh auto;

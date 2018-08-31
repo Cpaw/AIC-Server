@@ -23,7 +23,7 @@
           <button type="submit">Submit</button>
         </div>
       </form>
-      <div class="result" v-if="isSuccess">OK</div>
+      <div class="success" v-if="isSuccess">OK</div>
       <div class="error" v-if="isFailed">Invalid data</div>
     </section>
   </article>
@@ -152,10 +152,9 @@ button:active {
 .label {
   text-align: center;
 }
-.result {
+.success {
   margin: 2vh auto 2vh auto;
   font-size: 24px;
-  color: #ff5d86;
 }
 .error {
   margin: 2vh auto 2vh auto;
