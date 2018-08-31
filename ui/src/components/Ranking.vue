@@ -61,7 +61,9 @@ h2 {
 table {
   margin: 5vh auto;
   width: 60vw;
-  border-radius: 15px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: solid 3px #6699cc;
 }
 thead {
   font-size: 48px;
@@ -70,12 +72,11 @@ tbody {
   font-size: 36px;
 }
 th {
-  margin: 5vh auto;
   padding: 10px 0.5em 10px 0.5em;
   border-bottom: 3px solid #6699cc;
 }
 tr {
-  margin: 5vh auto 15vh auto;
+  /*margin: 5em auto 5em auto;*/
 }
 td {
   padding: 2vh;
