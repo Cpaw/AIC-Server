@@ -115,7 +115,7 @@ func (c ApiUser) Create() revel.Result {
 		}
 	}
 	salt := revel.Config.StringDefault("password.salt", "yatuhashi")
-	converted, _ := scrypt.Key([]byte(userNew.Password), []byte(salt), 16384, 8, 1, 32)
+	converted, _ := scrypt.Key([]byte(user.Password), []byte(salt), 16384, 8, 1, 32)
 	user.Password = hex.EncodeToString(converted[:])
 	if err := db.DB.Create(user).Error; err != nil {
 		return c.HandleBadRequestError(err.Error())
