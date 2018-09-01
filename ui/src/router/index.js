@@ -12,6 +12,7 @@ import EditChallenge from '@/components/admin/EditChallenge'
 import EditUser from '@/components/admin/EditUser'
 import UploadAnswer from '@/components/admin/UploadAnswer'
 import AddNotification from '@/components/admin/AddNotification'
+import Delete from '@/components/admin/Delete'
 
 Vue.use(Router)
 
@@ -76,6 +77,11 @@ export default new Router({
       path: '/admin/addnotification',
       name: 'addnotification',
       component: AddNotification
+    },
+    {
+      path: '/admin/delete',
+      name: 'delete',
+      component: Delete
     }
   ]
 })
